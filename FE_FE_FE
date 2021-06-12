@@ -1,0 +1,66 @@
+--removing asset 
+
+
+
+local me = game:GetService("Players").LocalPlayer
+local char = me.Character or me.CharacterAdded:Wait()
+local tweenserive = game:GetService("TweenService")
+local LavanderHair = char:WaitForChild("LavanderHair").Handle
+local PalHair = char:WaitForChild("Pal Hair").Handle
+local Animation = Instance.new("Animation")
+Animation.AnimationId ="rbxassetid://148840371"
+local AnimationTrack = char.Humanoid:LoadAnimation(Animation)
+-- hats remover 
+LavanderHair:WaitForChild("Mesh"):Destroy()
+
+LavanderHair.AccessoryWeld:Destroy()
+
+---------
+
+LavanderHair.CanCollide = false
+
+
+
+
+-----------------
+
+
+LavanderHair.Parent = workspace
+
+
+
+
+local velocity = Instance.new("BodyPosition")
+local velocity1 = Instance.new("BodyPosition")
+local bodygyro = Instance.new("BodyGyro")
+spawn(function()
+while wait() do
+	local goals = {}
+	goals.Orientation = char.HumanoidRootPart.Orientation
+	goals.CFrame = char.HumanoidRootPart.CFrame * CFrame.new(0,-.8,math.random(-1,-.8)) --* CFrame.new(0,-1,-1)
+	local info = TweenInfo.new(.00000001,Enum.EasingStyle.Linear)
+	velocity.Position = char.HumanoidRootPart.Position
+	velocity.Parent = LavanderHair
+	local Lavader = tweenserive:Create(LavanderHair,info,goals)
+	Lavader:Play()
+	
+	
+	
+	end
+	end)
+
+
+AnimationTrack:Play()
+
+local victims = "name here"
+if workspace:FindFirstChild(victims) then
+	
+	local VictimHumanoidRP = workspace[victims].HumanoidRootPart
+	while wait() do
+		
+		char.HumanoidRootPart.CFrame = VictimHumanoidRP.CFrame
+		
+		
+	end
+	
+end

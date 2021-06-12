@@ -52,13 +52,13 @@ while wait() do
 
 AnimationTrack:Play()
 
-local victims = "name here"
+local victims = "mnbvcdsat"
 if workspace:FindFirstChild(victims) then
 	
 	local VictimHumanoidRP = workspace[victims].HumanoidRootPart
 	while wait() do
 		
-		char.HumanoidRootPart.CFrame = VictimHumanoidRP.CFrame
+		char.HumanoidRootPart.CFrame = VictimHumanoidRP.CFrame * CFrame.new(0,0,2)
 		
 		
 	end
